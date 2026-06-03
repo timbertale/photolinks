@@ -18,19 +18,187 @@ var formTmpl = template.Must(template.New("form").Parse(`
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Привязка ссылки</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			min-height: 100vh;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			font-family: "Cormorant Garamond", serif;
+
+			background:
+				linear-gradient(
+					rgba(255,255,255,.15),
+					rgba(255,255,255,.15)
+				),
+				url('/static/wood.jpg') center center / cover no-repeat;
+		}
+
+		.container {
+			width: min(90%, 850px);
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			gap: 30px;
+
+			padding: 60px;
+
+			background: rgba(255,255,255,.18);
+
+			backdrop-filter: blur(8px);
+
+			border-radius: 32px;
+
+			border: 1px solid rgba(255,255,255,.35);
+
+			box-shadow:
+				0 25px 60px rgba(0,0,0,.15),
+				inset 0 1px 0 rgba(255,255,255,.5);
+		}
+
+		h1 {
+			text-align: center;
+
+			font-size: clamp(2rem, 4vw, 4rem);
+
+			font-weight: 500;
+
+			line-height: 1.15;
+
+			color: #5b3822;
+		}
+
+		form {
+			width: 100%;
+
+			display: flex;
+			flex-direction: column;
+
+			gap: 24px;
+		}
+
+		input {
+			width: 100%;
+			height: 78px;
+
+			padding: 0 28px;
+
+			border: none;
+			outline: none;
+
+			border-radius: 18px;
+
+			font-size: 1.3rem;
+
+			background: rgba(255,255,255,.85);
+
+			box-shadow:
+				inset 0 2px 8px rgba(0,0,0,.08),
+				0 6px 16px rgba(0,0,0,.08);
+		}
+
+		input::placeholder {
+			color: #9a816e;
+		}
+
+		button {
+			align-self: center;
+
+			min-width: 260px;
+			height: 70px;
+
+			border: none;
+			border-radius: 18px;
+
+			cursor: pointer;
+
+			font-family: inherit;
+			font-size: 1.6rem;
+
+			color: white;
+
+			background:
+				linear-gradient(
+					180deg,
+					#c7965e,
+					#9c6536
+				);
+
+			box-shadow:
+				0 8px 20px rgba(120,75,35,.35),
+				inset 0 1px 0 rgba(255,255,255,.4);
+
+			transition: all .25s ease;
+		}
+
+		button:hover {
+			transform: translateY(-2px);
+
+			box-shadow:
+				0 12px 28px rgba(120,75,35,.4),
+				inset 0 1px 0 rgba(255,255,255,.4);
+		}
+
+		button:active {
+			transform: translateY(1px);
+		}
+	</style>
 </head>
 <body>
-	<h1>Введите вашу ссылку на облако</h1>
+
+<div class="container">
+
+	<h1>
+		Введите вашу ссылку<br>
+		на облачное хранилище
+	</h1>
+
 	<form method="POST">
-		<input type="url" name="storage_link" placeholder="https://..." required style="width:300px">
-		<button type="submit">Сохранить</button>
+		<input
+			type="url"
+			name="storage_link"
+			placeholder="https://..."
+			required
+		>
+
+		<button type="submit">
+			Сохранить
+		</button>
 	</form>
+
+</div>
+
 </body>
 </html>
 `))
 
 func main() {
+	http.Handle(
+	"/static/",
+	http.StripPrefix(
+		"/static/",
+		http.FileServer(http.Dir("./static")),
+	),
+)
+	
 	var err error
 
 	// Получаем строку подключения к базе (Render задаёт DATABASE_URL в переменных окружения)
