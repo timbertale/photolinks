@@ -42,6 +42,7 @@ var formTmpl = template.Must(template.New("form").Parse(`
 
 			font-family: "Cormorant Garamond", serif;
 
+background: red;
 			background:
 				linear-gradient(
 					rgba(255,255,255,.15),
