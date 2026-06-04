@@ -120,34 +120,32 @@ var formTmpl = template.Must(template.New("form").Parse(`
 		}
 
 		button {
-			align-self: center;
+  		  width: 100%;
+   		 height: 70px;
 
-			min-width: 260px;
-			height: 70px;
+    border: none;
+    border-radius: 18px;
 
-			border: none;
-			border-radius: 18px;
+    cursor: pointer;
 
-			cursor: pointer;
+    font-family: inherit;
+    font-size: 1.6rem;
 
-			font-family: inherit;
-			font-size: 1.6rem;
+    color: white;
 
-			color: white;
+    background:
+        linear-gradient(
+            180deg,
+            #c7965e,
+            #9c6536
+        );
 
-			background:
-				linear-gradient(
-					180deg,
-					#c7965e,
-					#9c6536
-				);
+    box-shadow:
+        0 8px 20px rgba(120,75,35,.35),
+        inset 0 1px 0 rgba(255,255,255,.4);
 
-			box-shadow:
-				0 8px 20px rgba(120,75,35,.35),
-				inset 0 1px 0 rgba(255,255,255,.4);
-
-			transition: all .25s ease;
-		}
+    transition: all .25s ease;
+}
 
 		button:hover {
 			transform: translateY(-2px);
@@ -160,6 +158,55 @@ var formTmpl = template.Must(template.New("form").Parse(`
 		button:active {
 			transform: translateY(1px);
 		}
+
+		@media (max-width: 768px) {
+
+        body {
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            padding: 30px 20px;
+            border-radius: 24px;
+            gap: 24px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+
+        input {
+            height: 60px;
+            padding: 0 18px;
+            font-size: 1.1rem;
+        }
+
+        button {
+            width: 100%;
+            min-width: auto;
+            height: 60px;
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+
+        .container {
+            padding: 24px 16px;
+        }
+
+        h1 {
+            font-size: 1.7rem;
+        }
+
+        input,
+        button {
+            height: 54px;
+            font-size: 1rem;
+        }
+    }
 	</style>
 </head>
 <body>
