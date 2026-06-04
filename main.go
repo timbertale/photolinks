@@ -20,7 +20,7 @@ var formTmpl = template.Must(template.New("form").Parse(`
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Привязка ссылки</title>
+	<title>Timbertales - Link your storage</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -259,8 +259,8 @@ var formTmpl = template.Must(template.New("form").Parse(`
 		<div class="container">
 	
 			<h1>
-				Введите вашу ссылку<br>
-				на облачное хранилище
+				Add your<br>
+				cloud storage link
 			</h1>
 
 			<form method="POST">
@@ -272,7 +272,7 @@ var formTmpl = template.Must(template.New("form").Parse(`
 				>
 
 				<button type="submit">
-					Сохранить
+					Save link
 				</button>
 			</form>
 
