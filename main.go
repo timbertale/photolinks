@@ -221,14 +221,14 @@ var formTmpl = template.Must(template.New("form").Parse(`
         }
 
 		.page {
-        	padding: 24px 0;
+        	justify-content: flex-start;
+        	padding-top: 30px;
         	gap: 18px;
     	}
 
     	.center {
-        	flex: none;
-        	margin-top: auto;
-        	margin-bottom: auto;
+        	flex: unset;
+        	margin: 0;
     	}
     }
 
