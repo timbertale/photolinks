@@ -53,11 +53,11 @@ var formTmpl = template.Must(template.New("form").Parse(`
 
     		display: flex;
     		flex-direction: column;
-
-    		justify-content: space-between;
     		align-items: center;
 
     		padding: 40px 0;
+
+		    gap: 24px;
 		}
 
 		.center {
@@ -66,6 +66,7 @@ var formTmpl = template.Must(template.New("form").Parse(`
     		display: flex;
     		justify-content: center;
     		align-items: center;
+
     		width: 100%;
 		}
 		
@@ -218,6 +219,17 @@ var formTmpl = template.Must(template.New("form").Parse(`
             height: 60px;
             font-size: 1.3rem;
         }
+
+		.page {
+        	padding: 24px 0;
+        	gap: 18px;
+    	}
+
+    	.center {
+        	flex: none;
+        	margin-top: auto;
+        	margin-bottom: auto;
+    	}
     }
 
     @media (max-width: 400px) {
