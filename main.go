@@ -49,14 +49,24 @@ var formTmpl = template.Must(template.New("form").Parse(`
 		}
 
 		.page {
-    		min-height: calc(100vh - 80px);
+    		min-height: 100vh;
 
     		display: flex;
     		flex-direction: column;
-    		justify-content: center;
+
+    		justify-content: space-between;
     		align-items: center;
 
-    		gap: 28px;
+    		padding: 40px 0;
+		}
+
+		.center {
+    		flex: 1;
+
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+    		width: 100%;
 		}
 		
 		.container {
@@ -233,26 +243,28 @@ var formTmpl = template.Must(template.New("form").Parse(`
 
     <img src="/static/logo.png" alt="Logo" class="logo">
 
-	<div class="container">
+	<div class="center">
+		<div class="container">
 	
-		<h1>
-			Введите вашу ссылку<br>
-			на облачное хранилище
-		</h1>
+			<h1>
+				Введите вашу ссылку<br>
+				на облачное хранилище
+			</h1>
 
-		<form method="POST">
-			<input
-				type="url"
-				name="storage_link"
-				placeholder="https://..."
-				required
-			>
+			<form method="POST">
+				<input
+					type="url"
+					name="storage_link"
+					placeholder="https://..."
+					required
+				>
 
-			<button type="submit">
-				Сохранить
-			</button>
-		</form>
+				<button type="submit">
+					Сохранить
+				</button>
+			</form>
 
+		</div>
 	</div>
 </div>
 </body>
