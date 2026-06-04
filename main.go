@@ -159,6 +159,22 @@ var formTmpl = template.Must(template.New("form").Parse(`
 			transform: translateY(1px);
 		}
 
+	.logo {
+    	width: clamp(120px, 20vw, 220px);
+
+    	animation: float 4s ease-in-out infinite;
+	}
+
+	@keyframes float {
+    	0%, 100% {
+        	transform: translateY(0);
+    	}
+
+    	50% {
+        		transform: translateY(-6px);
+    		}
+		}
+
 		@media (max-width: 768px) {
 
         body {
@@ -213,6 +229,8 @@ var formTmpl = template.Must(template.New("form").Parse(`
 
 <div class="container">
 
+	<img src="/static/logo.png" alt="Logo" class="logo">
+	
 	<h1>
 		Введите вашу ссылку<br>
 		на облачное хранилище
