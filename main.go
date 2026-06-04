@@ -34,22 +34,31 @@ var formTmpl = template.Must(template.New("form").Parse(`
 		}
 
 		body {
-			min-height: 100vh;
+    		min-height: 100vh;
 
-			display: flex;
-			justify-content: center;
-			align-items: center;
+    		padding: 40px 20px;
 
-			font-family: "Cormorant Garamond", serif;
+    		font-family: "Cormorant Garamond", serif;
 
-			background:
-				linear-gradient(
-					rgba(255,255,255,.15),
-					rgba(255,255,255,.15)
-				),
-				url('/static/wood.jpg') center center / cover no-repeat;
+    		background:
+        		linear-gradient(
+            		rgba(255,255,255,.15),
+            		rgba(255,255,255,.15)
+        		),
+        		url('/static/wood.jpg') center center / cover no-repeat;
 		}
 
+		.page {
+    		min-height: calc(100vh - 80px);
+
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: center;
+    		align-items: center;
+
+    		gap: 28px;
+		}
+		
 		.container {
 			width: min(90%, 850px);
 
@@ -159,20 +168,14 @@ var formTmpl = template.Must(template.New("form").Parse(`
 			transform: translateY(1px);
 		}
 
-	.logo {
-    	width: clamp(120px, 20vw, 220px);
+		.logo {
+    		width: clamp(120px, 20vw, 220px);
+    		height: auto;
 
-    	animation: float 4s ease-in-out infinite;
-	}
+    		object-fit: contain;
 
-	@keyframes float {
-    	0%, 100% {
-        	transform: translateY(0);
-    	}
-
-    	50% {
-        		transform: translateY(-6px);
-    		}
+    	filter:
+        	drop-shadow(0 6px 14px rgba(0,0,0,.18));
 		}
 
 		@media (max-width: 768px) {
@@ -226,31 +229,32 @@ var formTmpl = template.Must(template.New("form").Parse(`
 	</style>
 </head>
 <body>
+<div class="page">
 
-<div class="container">
+    <img src="/static/logo.png" alt="Logo" class="logo">
 
-	<img src="/static/logo.png" alt="Logo" class="logo">
+	<div class="container">
 	
-	<h1>
-		Введите вашу ссылку<br>
-		на облачное хранилище
-	</h1>
+		<h1>
+			Введите вашу ссылку<br>
+			на облачное хранилище
+		</h1>
 
-	<form method="POST">
-		<input
-			type="url"
-			name="storage_link"
-			placeholder="https://..."
-			required
-		>
+		<form method="POST">
+			<input
+				type="url"
+				name="storage_link"
+				placeholder="https://..."
+				required
+			>
 
-		<button type="submit">
-			Сохранить
-		</button>
-	</form>
+			<button type="submit">
+				Сохранить
+			</button>
+		</form>
 
+	</div>
 </div>
-
 </body>
 </html>
 `))
